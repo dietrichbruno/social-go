@@ -1,0 +1,16 @@
+services:
+  db:
+    build: .docker
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: social
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.docker/dbdata:/var/lib/postgresql/data
+      - ./init.sql:/scripts/db_init.sql
+
+volumes:
+  db-data:
