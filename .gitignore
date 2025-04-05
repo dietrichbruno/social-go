@@ -1,0 +1,13 @@
+.docker/dbdata
+
+.idea
+*.iml
+*.log
+*.coverage
+*.cover
+
+.env
+bin
+.envrc
+*.DS_Store
+.vscode
