@@ -46,7 +46,7 @@ ehthumbs.db
 Thumbs.db
 
 # Environment files
-.env
+.envrc
 
 # Log files
 *.log

@@ -1,1 +1,8 @@
 export ADDR=":8080"
+export DB_HOST="localhost"
+export DB_PORT="5432"
+export DB_USER="root"
+export DB_PASSWORD="root"
+export DB_NAME="mydb"
+export DB_SSLMODE="disable"
+export DB_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=${DB_SSLMODE}"
