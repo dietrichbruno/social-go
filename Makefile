@@ -2,7 +2,7 @@ include .envrc
 MIGRATIONS_PATH= ./cmd/migrate/migrations
 
 .PHONY: migrate-create
-migrate-create:
+migration:
 	@echo "Creating migration file..."
 	@read -p "Enter migration name: " name; \
 	if [ -z "$$name" ]; then \
@@ -14,27 +14,11 @@ migrate-create:
 .PHONY: migrate-up
 migrate-up:
 	@echo "Applying migrations..."
-	@read -p "Enter migration version (or 'latest' for latest): " version; \
-	if [ "$$version" = "latest" ]; then \
-		migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" up; \
-	else \
-		migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" up "$$version"; \
-	fi
+		migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" up;
 	@echo "Migrations applied successfully."
 
 .PHONY: migrate-down
 migrate-down:
 	@echo "Rolling back migrations..."
-	@read -p "Enter migration version (or 'latest' for latest): " version; \
-	if [ "$$version" = "latest" ]; then \
-		migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" down; \
-	else \
-		migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" down "$$version"; \
-	fi
+		migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" down;
 	@echo "Migrations rolled back successfully."
-	
-.PHONY: migrate-status
-migrate-status:
-	@echo "Checking migration status..."
-	migrate -path $(MIGRATIONS_PATH) -database "$(DB_URL)" version
-	@echo "Migration status checked successfully."
